@@ -6,13 +6,8 @@ It creates valid equations in the format: number operator number = result
 For example: 12+34=46 or 8*7=56
 """
 
-########################################
-# TODO: Import the appropriate modules #
-########################################
+import random
 
-###########################################
-# TODO: Implement the following functions #
-###########################################
 
 def generate_numbers_for_addition():
     """
@@ -25,6 +20,14 @@ def generate_numbers_for_addition():
     Example: (12, 34, 46) creates "12+34=46"
     """
 
+    # Generates 2 random numbers, and ensures they are 2 digits, and ensuring the answer will also be 2 digits
+    number1 = random.randint(10, 50)
+    number2 = random.randint(10, 49) # max is 49 because answer cannot be 100
+
+    return (number1, number2, number1+number2)
+
+
+
 def generate_numbers_for_subtraction():
     """
     Generate two numbers that when subtracted create an 8-character equation.
@@ -35,6 +38,17 @@ def generate_numbers_for_subtraction():
 
     Example: (56, 23, 33) creates "56-23=33"
     """
+
+    # Will be number1 minus number2 (number1 - number2
+    number1 = random.randint(10, 99) # 2 digit number
+    number2 = random.randint(10, number1) # number2's max has to be less than or equal to number1
+
+    # Changes the numbers if the answer is not 2 digits
+    while len(str(number1-number2)) != 2:
+        number1 = random.randint(10, 99)
+        number2 = random.randint(10, number1)
+
+    return (number1, number2, number1-number2)
 
 def generate_numbers_for_multiplication():
     """
@@ -48,6 +62,17 @@ def generate_numbers_for_multiplication():
     Example: (3, 34, 102) creates "3*34=102" (8 characters)
     """
 
+    # Generates random numbers, making number1 a single digit number, and number2 a 2 digit number 
+    number1 = random.randint(1, 9)
+    number2 = random.randint(10, 99)
+    
+    # Loops until number1 * number2 is a 3 digit number
+    while len(str(number1 * number2)) != 3:
+        number1 = random.randint(1, 9)
+        number2 = random.randint(10, 99)
+
+    return (number1, number2, number1 * number2)
+
 def generate_numbers_for_division():
     """
     Generate two numbers that when divided create an 8-character equation.
@@ -59,6 +84,21 @@ def generate_numbers_for_division():
 
     Example: (252, 36, 7) creates "252/36=7"
     """
+    
+    # Works backwards, finding the 1 digit result and 2 digit divisor before
+    # finding the dividend.
+    result = random.randint(1, 9)
+    divisor = random.randint(10, 99)
+    dividend = result * divisor
+
+
+    # Loops and changes numbers until the dividend is 3 digits. 
+    while len(str(dividend)) != 3:
+        result = random.randint(1, 9)
+        divisor = random.randint(10, 99)
+        dividend = result * divisor
+
+    return (dividend, divisor, result)
     
 ################################################################################
 #  DO NOT EDIT BELOW THIS LINE, THESE FUNCTIONS ARE ALREADY COMPLETED FOR YOU  #
