@@ -7,11 +7,7 @@ For example: 12+34=46 or 8*7=56
 """
 
 import random
-from time import sleep
 
-###########################################
-# TODO: Implement the following functions #
-###########################################
 
 def generate_numbers_for_addition():
     """

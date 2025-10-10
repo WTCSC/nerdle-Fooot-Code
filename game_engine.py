@@ -5,15 +5,8 @@ This module handles the core game logic for Nerdle.
 It manages the game state, validates user input, and provides feedback.
 """
 
-########################################
-# TODO: Import the appropriate modules #
-########################################
 
 import equation_generator
-
-###########################################
-# TODO: Implement the following functions #
-###########################################
 
 def is_valid_guess(guess):
     """
